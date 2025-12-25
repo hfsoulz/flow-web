@@ -1,0 +1,41 @@
+luflow.net static web site generator
+Maintainer:  Andreas Widen <aw@luflow.net>
+License: GNU AGPL-3.0 or later (see LICENSE for details)
+URL: https://www.luflow.net
+
+Authors
+=======
+
+Andreas Widen <aw@luflow.net>
+
+
+Other authors
+=============
+
+The static generator uses the following packages:
+- async-recursion is available under MIT OR Apache-2.0 license and is available
+  at: https://github.com/dcchut/async-recursion
+
+- chrono is available under MIT OR Apache-2.0 license and is available at:
+  https://github.com/chronotope/chrono
+
+- markdown is available under MIT license and is available at:
+  https://github.com/wooorm/markdown-rs
+
+- regex is available under MIT OR Apache-2.0 license and is available at:
+  https://github.com/rust-lang/regex
+
+- sailfish is available under MIT license and is available at:
+  https://github.com/rust-sailfish/sailfish
+
+- tokio is available under MIT license and is available at:
+  https://github.com/tokio-rs/tokio
+
+Graphics
+========
+
+Public domain 2015 Luis Felipe López Acevedo and Andreas Widen 2025.
+
+All the graphics in this directory are dedicated to the public domain, except
+for the luflow.net logo (navigation bar logo to the left), which can be used
+under the Creative Commons Attribution-ShareAlike 4.0 International License.

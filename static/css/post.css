@@ -1,0 +1,104 @@
+/* luflow.net web site */
+/* Public domain 2025. All rights waived */
+
+article {
+    line-height: 1.4em;
+}
+
+article p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+article ul {
+    margin-left: 32px;
+}
+
+article a:link,
+article a:visited {
+    border-color: #f4bb15;
+    border-style: none none solid none;
+    border-width: thin;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+article a:active,
+article a:focus,
+article a:hover {
+    border-color: #f49b15;
+    border-style: none none dashed none;
+    color: black;
+}
+
+article a img {
+    border-style: none;
+}
+
+article h4 {
+    font-size: 2em;
+    padding: 30px 0px;
+}
+
+article h5 {
+    font-size: 1.5em;
+}
+
+article audio,
+article img,
+article video {
+    display: block;
+    margin: 50px auto;
+    max-width: 100%;
+}
+
+.post-metadata {
+    color: #4d4d4d;
+    margin-bottom: 50px;
+}
+
+.topic-list {
+    margin: 50px 0px;
+}
+
+.topic-list p {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Aim for ~12 words per line for good readability.  */
+article.limit-width {
+    max-width: 720px;
+}
+
+.license {
+    font-size: 0.8em;
+    line-height: 1.4em;
+}
+
+article button {
+    padding: 2px;
+    margin: 2px;
+    min-width: 5em;
+}
+
+/* force wrapping to new line so that scrollbar isn't needed: */
+code[class*='language-'] {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.copy-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #white;
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.copy-code:hover {
+    background-color: #f6f6f6;
+}

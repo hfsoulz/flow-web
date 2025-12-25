@@ -1,0 +1,74 @@
+/* luflow.net web site */
+/* Public domain 2025. All rights waived */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #4d4d4d;
+    line-height: 1.2em;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+h4,
+h5 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    line-height: 1.2em;
+    padding: 16px 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.2em;
+}
+
+/* Aim for ~12 words per line for good readability.  */
+.page.limit-width,
+.page-post.limit-width {
+    max-width: 720px;
+}
+
+.page-post {
+    background-color: white;
+    padding: 50px 20px;
+}
+
+.page {
+    background-color: white;
+    padding: 50px 20px;
+}
+
+.page p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.page a:link,
+.page a:visited {
+    border-color: #f4bb15;
+    border-style: none none solid none;
+    border-width: thin;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.page a:active,
+.page a:focus,
+.page a:hover {
+    border-color: #f49b15;
+    border-style: none none dashed none;
+    color: black;
+}

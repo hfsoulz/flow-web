@@ -1,0 +1,190 @@
+/* luflow.net web site */
+/* Public domain 2025. All rights waived */
+
+header {
+    position: sticky;
+    transition: transform 0.25s ease-in-out;
+    top: 0;
+    width: 100%;
+    min-height: 66px;
+    background: #333;
+    border-color: #1a1a1a;
+    border-style: none none solid none;
+    border-width: thin;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    z-index: 1000;
+}
+
+.nav-up {
+    transform: translateY(-100px);
+}
+
+.nav-down {
+    transform: translateY(0px);
+}
+
+.branding:link,
+.branding:active,
+.branding:focus,
+.branding:hover,
+.branding:visited {
+    background-image: url('../img/branding.png');
+    background-repeat: no-repeat;
+    border-style: none;
+    display: inline-block;
+    height: 55px;
+    width: 54px;
+}
+
+header ul {
+    position: relative;
+}
+
+header ul li {
+    position: relative;
+    list-style: none;
+    float: left;
+}
+
+header ul li a {
+    color: #fff;
+    font-size: 1.1em;
+    padding: 28px 25px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+header ul li a:link {
+    color: #e6e6e6;
+}
+
+header ul li a:hover,
+.menu-item-active:link,
+.menu-item-active:visited {
+    color: #f4bb15;
+}
+
+a.menu-item-active:link,
+a.menu-item-active:visited {
+    background-image: url('../img/menu-item-active-bg.png');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+
+header ul li a:hover {
+    background: #434343;
+}
+
+header ul li b {
+    padding-left: 4px;
+}
+
+header ul li ul {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    background: #333;
+    display: none;
+}
+
+header ul li:hover > ul {
+    display: block;
+}
+
+header ul li ul li {
+    position: relative;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+header ul li ul li ul {
+    top: 0;
+    left: 200px;
+}
+
+/* make it responsive */
+@media (max-width: 900px) {
+    header {
+        padding: 10px 32px;
+    }
+
+    header nav {
+        position: absolute;
+        width: 100%;
+        top: 66px;
+        left: 0;
+        background: #333;
+        display: none;
+    }
+
+    header.active nav {
+        display: initial;
+    }
+
+    header nav ul li {
+        width: 100%;
+    }
+
+    a.menu-item-active:link,
+    a.menu-item-active:visited {
+        background-image: none;
+    }
+
+    header nav ul li ul {
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+
+    header ul li ul li ul {
+        top: 0;
+        left: 0;
+    }
+
+    header nav ul li:hover ul li {
+        background: #333;
+    }
+
+    .menuToggle {
+        position: relative;
+        width: 40px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menuToggle::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background: #fff;
+        transform: translateY(-12px);
+        box-shadow: 0 12px #fff;
+    }
+
+    .menuToggle::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background: #fff;
+        transform: translateY(12px);
+    }
+
+    header.active .menuToggle::before {
+        transform: rotate(45deg);
+        box-shadow: 0 0 #fff;
+    }
+
+    header.active .menuToggle::after {
+        transform: rotate(315deg);
+    }
+}

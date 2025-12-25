@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="luflow Blog, <%= self.overview_keywords %>, page <%= self.overview_current_page %>">
+    <meta name="description" content="<%= self.overview_title %> Page <%= self.overview_current_page %>">
+    <link type="application/atom+xml" rel="alternate" title="luflow.net — Activity Feed" href="/feeds/blog.atom">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/item-preview.css">
+    <link rel="stylesheet" href="/static/css/buttons.css">
+    <link rel="stylesheet" href="/static/css/breadcrumbs.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/page.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+    <title><%= self.overview_title %> Page <%= self.overview_current_page %> | luflow.net</title>
+</head>
+<body>
+    <div id="content">
+
+        <% include!("./partials/header.stpl"); %>
+
+        <% include!("./partials/blog_overview_breadcrumbs.stpl"); %>
+
+        <main>
+            <section class="page-post centered-text">
+                <h2><%= self.overview_title %><span class="page-number-indicator"> (Page <%= self.overview_current_page %> of <%= self.overview_num_pages %>)</span></h2>
+                <div class="sheet">
+                    <% 
+                        if self.overview_type == 1 {
+                            if let Some(indices) = self.topic_blog_indices.get(&self.overview_topic) {
+                                for i in self.overview_offset..self.overview_offset + self.overview_num_posts {
+                                    let index = match indices.get(i) {
+                                        Some(value) => value,
+                                        _ => panic!("Did not find blog post for index: {}", i),
+                                    };
+                                    let post = match self.blog_posts.get(*index) {
+                                        Some(value) => value,
+                                        _ => panic!("Did not find blog post for index: {}", i),
+                                    };
+                    %>
+                    <a class="item-preview" href="/<%= post.base_dir %>/<%= post.url %>/">
+                        <h3 lang="en"><%= post.title %></h3>
+                        <p class="item-date"><%= post.published.to_string() %></p>
+                        <p class="item-summary" lang="en"><%= post.snippet %></p>
+                    </a>
+                    <% 
+                                }
+                            }
+                        } else if self.overview_type == 2 {
+                            if let Some(indices) = self.year_blog_indices.get(&self.overview_year) {
+                                for i in self.overview_offset..self.overview_offset + self.overview_num_posts {
+                                    let index = match indices.get(i) {
+                                        Some(value) => value,
+                                        _ => panic!("Did not find blog post for index: {}", i),
+                                    };
+                                    let post = match self.blog_posts.get(*index) {
+                                        Some(value) => value,
+                                        _ => panic!("Did not find blog post for index: {}", i),
+                                    };
+                    %>
+                    <a class="item-preview" href="/<%= post.base_dir %>/<%= post.url %>/">
+                        <h3 lang="en"><%= post.title %></h3>
+                        <p class="item-date"><%= post.published.to_string() %></p>
+                        <p class="item-summary" lang="en"><%= post.snippet %></p>
+                    </a>
+                    <% 
+                                }
+                            }
+                        } else if self.overview_type == 0 {
+                            for i in self.overview_offset..self.overview_offset + self.overview_num_posts {
+                                let post = match self.blog_posts.get(i) {
+                                    Some(value) => value,
+                                    _ => panic!("Did not find blog post for index: {}", i),
+                                };
+                    %>
+                    <a class="item-preview" href="/<%= post.base_dir %>/<%= post.url %>/">
+                        <h3 lang="en"><%= post.title %></h3>
+                        <p class="item-date"><%= post.published.to_string() %></p>
+                        <p class="item-summary" lang="en"><%= post.snippet %></p>
+                    </a>
+                    <% 
+                            }
+                        } else {
+                            panic!("overview_type: {} is not implemented!", self.overview_type);
+                        }
+                    %>
+
+                    <nav class="page-selector">
+                        <h3 class="a11y-offset">Page <%= self.overview_current_page %> of <%= self.overview_num_pages %>. Go to another page: </h3>
+                        <%
+                            for i in 1..self.overview_num_pages + 1 {
+                                let mut page_url = format!("/{}/page/{}/", self.base_dir, i);
+                                if self.overview_type == 1 {
+                                    page_url = format!("/{}/topic/{}/page/{}/", self.base_dir, self.overview_topic_sanitized, i);
+                                } else if self.overview_type == 2 {
+                                    page_url = format!("/{}/year/{}/page/{}/", self.base_dir, self.overview_year, i);
+                                }
+
+                                let mut button_class = "button-little";
+                                if i == self.overview_current_page {
+                                    button_class = "button-little button-little-active";
+                                }
+                        %>
+                        <a class="<%= button_class %>" href="<%= page_url %>"><%= i %></a>
+                        <% } %>
+                    </nav>
+                </div>
+
+                <section class="side-bar">
+                    <h3 class="a11y-offset">Blog menu: </h3>
+                    <ul class="bar-list">
+                        <h4 class="bar-title bar-title-top">Get blog updates</h4>
+                        <li class="bar-item">
+                            <a class="bar-link feed-link" href="/feeds/blog.atom">Atom feed</a>
+                        </li>
+                    </ul>
+
+                    <ul class="bar-list">
+                        <h4 class="bar-title bar-title-top">Posts by topic</h4>
+                        <%
+                            for (i, topic) in self.topics.iter().enumerate() {
+                                let mut topic_sanitized = String::from("");
+                                if let Some(value) = self.topics_sanitized.get(i) {
+                                    topic_sanitized = String::from(value);
+                                }
+
+                                let mut num_blog_posts_topic = 0;
+                                if let Some(indices) = self.topic_blog_indices.get(topic) {
+                                    num_blog_posts_topic = indices.len();
+                                }
+
+                                let topic_url = format!("/{}/topic/{}/", self.base_dir, topic_sanitized);
+                        %>
+                        <li class="bar-item">
+                            <a class="bar-link" href="<%= topic_url %>"><%= topic %> (<%= num_blog_posts_topic %>)</a>
+                        </li>
+                        <% } %>
+                    </ul>
+
+                    <ul class="bar-list">
+                        <h4 class="bar-title bar-title-top">Posts by year</h4>
+                        <%
+                            for year in &self.years {
+                                let mut num_blog_posts_year = 0;
+                                if let Some(indices) = self.year_blog_indices.get(year) {
+                                    num_blog_posts_year = indices.len();
+                                }
+
+                                let year_url = format!("/{}/year/{}/", self.base_dir, year);
+                        %>
+                        <li class="bar-item">
+                            <a class="bar-link" href="<%= year_url %>"><%= year %> (<%= num_blog_posts_year %>)</a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </section>
+            </section>
+        </main>
+
+        <% include!("./partials/footer.stpl"); %>
+
+    </div>
+
+    <% include!("./partials/script_core.stpl"); %>
+    <script>
+        // make menu item active visually:
+        let menuItem = document.getElementById("Blog");
+        if (menuItem)
+        {
+            menuItem.classList.add("menu-item-active");
+        }
+    </script>
+
+</body>
+</html>
+

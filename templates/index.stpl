@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="luflow, HFGE, Free Software, C++, Libre software, Engine, Game Engine, Graphics, 3D, 2D, Programming, Vulkan">
+    <meta name="description" content="This website is dedicated to free software primarily in the area of graphics engines but also free software in general.">
+    <link type="application/atom+xml" rel="alternate" title="luflow.net — Activity Feed" href="/feeds/blog.atom">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/elements.css">
+    <link rel="stylesheet" href="/static/css/item-preview.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/buttons.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <title>HFGE 3D engine, coding and free software | luflow.net</title>
+</head>
+<body>
+    <div id="content">
+
+        <% include!("./partials/header.stpl"); %>
+
+        <main>
+            <% include!("./partials/index_featured_content.stpl"); %>
+
+            <section class="discovery-box">
+                <h2>Screenshots</h2>
+                <p class="limit-width centered-block">A few early development screenshots of <a href="/<%= self.hfge_url %>" class="link-yellow">HFGE</a> in action.</p>
+                <div class="screenshots-box">
+                    <% 
+                        for screenshot in &self.screenshots {
+                    %>
+                    <div class="screenshot-preview">
+                        <a href="/<%= screenshot.url %>/">
+                            <img class="responsive-image" src="/<%= screenshot.image_min %>" alt="" />
+                            <span class="screenshot-inset-shadow"></span>
+                        </a>
+                        <p class="screenshot-preview-description"><%= screenshot.title %>
+                            <span class="hidden">.</span>
+                        </p>
+                    </div>
+                    <% } %>
+                </div>
+            </section>
+
+            <section class="centered-text">
+            <h2>Latest blog posts</h2>
+            <% 
+                for blog_post in &self.blog_posts {
+            %>
+            <a class="item-preview" href="/<%= self.blog_base_dir %>/<%= blog_post.url %>/">
+                <h3 lang="en"><%= blog_post.title %></h3>
+                <p class="item-date"><%= blog_post.published.to_string() %></p>
+                <p class="item-summary" lang="en"><%= blog_post.snippet %></p>
+            </a>
+            <% } %>
+            <div class="action-box centered-text">
+                <a class="button-big" href="/<%= self.blog_base_dir %>/">ALL POSTS</a>
+            </div>
+            </section>
+        </main>
+
+        <% include!("./partials/footer.stpl"); %>
+
+    </div>
+
+    <% include!("./partials/script_core.stpl"); %>
+    <script>
+        // make menu item active visually:
+        let menuItem = document.getElementById("Home");
+        if (menuItem)
+        {
+            menuItem.classList.add("menu-item-active");
+        }
+    </script>
+
+</body>
+</html>
+

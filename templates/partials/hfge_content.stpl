@@ -1,0 +1,20 @@
+<main>
+            <section class="page centered-block limit-width">
+                <h2>About HFGE</h2>
+                <p>
+                    HFGE is a new cross platform 3D engine currently in
+                    development. HFGE is written in C++ and will initially
+                    support Windows and GNU/Linux platforms. HFGE will use a
+                    modern renderer in the form of Vulkan.
+                </p>
+                <p>
+                    HFGE is free / libre software and will be distributed under
+                    the zlib license. This license allows you to use HFGE freely
+                    in any software.
+                </p>
+                <p>
+                    More information, downloads and git repoistory will be
+                    available once it's ready for public release.
+                </p>
+            </section>
+        </main>

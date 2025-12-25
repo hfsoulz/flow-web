@@ -1,0 +1,13 @@
+<div class="topic-list" lang="en">
+                    <p>Related topics:</p>
+                    <% 
+                        for (i, topic) in self.topics.iter().enumerate() {
+                            let mut topic_sanitized = "";
+                            if let Some(value) = self.topics_sanitized.get(i) {
+                                topic_sanitized = value;
+                            }
+                            let topic_sanitized_url = format!("/{}/{}/{}/", self.base_dir, self.topic_base_dir, topic_sanitized);
+                    %>
+                    <a class="button-little" href="<%= topic_sanitized_url %>"><%= topic %></a> 
+                    <% } %>
+                </div>

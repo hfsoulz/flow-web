@@ -1,0 +1,122 @@
+/* luflow.net web site */
+/* Public domain 2025. All rights waived */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+#content {
+    min-height: 100vh;
+    background: #333;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Offset element (A11Y)
+   - Hide the element in graphic Web browsers.
+   - But display it in text-based browsers.
+*/
+.a11y-offset {
+    position: absolute;
+    left: -50000px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.centered-block {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.justify-left {
+    text-align: left;
+}
+
+.justify-right {
+    text-align: right;
+}
+
+.light-text {
+    color: #e6e6e6;
+}
+
+.limit-width {
+    max-width: 960px;
+}
+
+.mono {
+    font-family: monospace;
+}
+
+.link-yellow:link,
+.link-yellow:visited {
+    border-style: none;
+    color: #f4bb15;
+}
+
+.link-yellow:active,
+.link-yellow:focus,
+.link-yellow:hover {
+    color: #f49b15;
+}
+
+.noise-bg {
+    background-color: #333;
+    background-image: url('../img/noise-bg.png');
+}
+
+.page-number-indicator {
+    display: block;
+    font-size: 0.4em;
+    font-weight: normal;
+    padding: 10px 5px;
+}
+
+.page-selector {
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.responsive-image {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.sheet {
+    box-sizing: border-box;
+}
+
+.top-shadow-bg {
+    background-image: url('../img/depression-shadow-top.png');
+    background-repeat: repeat-x;
+}
+
+@media screen and (min-width: 1280px) {
+    .sheet {
+        display: inline-block;
+        vertical-align: top;
+        width: 75%;
+    }
+
+    .sheet-padded {
+        padding-right: 20px;
+    }
+}

@@ -1,0 +1,8 @@
+<main>
+            <section class="page centered-block limit-width">
+                <h2>Contact</h2>
+                <h3>Email</h3>
+                <p>Feel free to send your current thoughts to the email address listed below.</p>
+                <p><a href="mailto:hello@luflow.net">hello@luflow.net</a></p>
+            </section>
+        </main>
