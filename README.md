@@ -1,11 +1,11 @@
 # About flow-web
 
-flow-web is a custom cli tool written in Rust. flow-web is used to generate the
+`flow-web` is a custom cli tool written in `Rust`. `flow-web` is used to generate the
 static website at [https://www.luflow.net](https://www.luflow.net).
 
 # Installation
 
-Install Rust from your package manager or by downloading from here:
+Install `Rust` from your package manager or by downloading from here:
 [https://rust-lang.org/](https://rust-lang.org/).
 
 # Generate the website
