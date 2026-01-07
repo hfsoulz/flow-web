@@ -16,19 +16,16 @@ article ul {
 
 article a:link,
 article a:visited {
-    border-color: #f4bb15;
-    border-style: none none solid none;
-    border-width: thin;
-    color: #1a1a1a;
+    color: #0064ff;
     text-decoration: none;
 }
 
 article a:active,
 article a:focus,
 article a:hover {
-    border-color: #f49b15;
     border-style: none none dashed none;
-    color: black;
+    border-width: thin;
+    color: #357edd;
 }
 
 article a img {

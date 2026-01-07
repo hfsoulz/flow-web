@@ -58,17 +58,14 @@ h3 {
 
 .page a:link,
 .page a:visited {
-    border-color: #f4bb15;
-    border-style: none none solid none;
-    border-width: thin;
-    color: #1a1a1a;
+    color: #0064ff;
     text-decoration: none;
 }
 
 .page a:active,
 .page a:focus,
 .page a:hover {
-    border-color: #f49b15;
     border-style: none none dashed none;
-    color: black;
+    border-width: thin;
+    color: #357edd;
 }
