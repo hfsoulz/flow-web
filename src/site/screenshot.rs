@@ -19,8 +19,8 @@ pub struct Screenshot {
 }
 
 impl Screenshot {
-    pub fn new() -> Screenshot {
-        Screenshot {
+    pub fn new() -> Self {
+        Self {
             screenshots_title: String::new(),
             screenshots_url: String::new(),
             title: String::new(),
@@ -31,7 +31,7 @@ impl Screenshot {
         }
     }
 
-    pub async fn generate(&self) {
+    pub fn generate(&self) {
         // create output dir needed:
         self.create_output_dir();
 

@@ -26,7 +26,7 @@ impl Helper {
         return cwd.join("output");
     }
 
-    /// Replaces spaces with '-' and only allows 'a-z', 'A-Z', '0-9' and '-' characters and
+    /// Replaces spaces with '-', only allows 'a-z', 'A-Z', '0-9' and '-' characters and finally
     /// converts to lowercase.
     ///
     /// # Arguments
