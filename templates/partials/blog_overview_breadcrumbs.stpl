@@ -1,0 +1,8 @@
+<nav class="breadcrumbs">
+            <h2 class="a11y-offset">Your location:</h2>
+            <a class="crumb" href="/">Home</a>
+            <span> > </span>
+            <a class="crumb" href="/<%= self.base_dir %>/">Blog</a>
+            <span> > </span>
+            <a class="crumb crumb-active" href="/<%= self.overview_page_url %>/">Page <%= self.overview_current_page %></a>
+        </nav>

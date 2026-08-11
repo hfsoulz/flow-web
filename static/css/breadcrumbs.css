@@ -1,0 +1,38 @@
+/* luflow.net web site */
+/* Public domain 2025. All rights waived */
+
+.breadcrumbs {
+    background-color: #e6e6e6;
+    background-image: url('../img/breadcrumbs-bg.png');
+    color: #e6e6e6;
+    font-size: 0.8em;
+    padding: 0px 15px;
+}
+
+.breadcrumbs span {
+    display: inline-block;
+    font-size: 0.7em;
+    line-height: 2em;
+    padding: 0px 5px;
+}
+
+.crumb:link,
+.crumb:visited {
+    border-style: none;
+    color: #e6e6e6;
+    display: inline-block;
+    line-height: 2em;
+    padding: 0px 5px;
+    text-decoration: none;
+}
+
+.crumb:active,
+.crumb:focus,
+.crumb:hover {
+    color: #fade8b;
+}
+
+.crumb-active:link,
+.crumb-active:visited {
+    color: #fade8b;
+}

@@ -1,0 +1,13 @@
+<main>
+            <section class="page centered-block limit-width">
+                <h2>Contact</h2>
+                <h3>Email</h3>
+                <p>Feel free to send your current thoughts to the email address listed below.</p>
+                <p><a href="mailto:hello@luflow.net">hello@luflow.net</a></p>
+                <h3>GPG key</h3>
+                <p>For encrypted communication download: <a href="https://luflow.net/static/gpg/aw-luflow-net-pubkey.asc">https://luflow.net/static/gpg/aw-luflow-net-pubkey.asc</a></p>
+                <p>Then</p>
+                <pre><code class="language-sh">gpg --import aw-luflow-net-pubkey.asc</code></pre>
+                <p>This key is also used for signing Git commits and tags.</p>
+            </section>
+        </main>

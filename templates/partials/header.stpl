@@ -1,0 +1,25 @@
+ <header>
+            <a href="/" class="branding"></a>
+            <div class="menuToggle"></div>
+            <nav>
+                <ul>
+                    <li><a href="/" id="Home">Home</a></li>
+                    <li><a href="https://git.luflow.net/explore/repos" id="Git">Git</a></li>
+                    <li><a href="#" id="Projects">Projects &#9660;</a>
+                        <ul>
+                            <li><a href="/projects/hfge/">HFGE</a></li>
+                            <li><a href="/blog/flow-web-a-program-that-will-allow-you-to-generate-static-website/">flow-web</a></li>
+                            <li><a href="/blog/flow-rectpack-a-library-for-packing-rectangles-into-two-dimensional-finite-bins/">flow-rectpack</a></li>
+                            <li><a href="/blog/flow-texpack-a-program-that-will-allow-you-to-generate-texture-atlas/">flow-texpack</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" id="Screenshots">Screenshots &#9660;</a>
+                        <ul>
+                            <li><a href="/projects/hfge/screenshots/">HFGE</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/blog/" id="Blog">Blog</a></li>
+                    <li><a href="/contact/" id="Contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
