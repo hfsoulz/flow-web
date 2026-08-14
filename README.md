@@ -8,7 +8,7 @@
 Install `Rust` from your package manager or by downloading from here:
 [https://rust-lang.org/](https://rust-lang.org/).
 
-## Generate the website
+## Build from source
 
 Build using release mode:
 
@@ -16,10 +16,18 @@ Build using release mode:
 cargo build --release
 ```
 
-Run to generate site:
+## Generate the site
+
+If built from source:
 
 ```sh
 cargo run --release
+```
+
+If downloaded binary:
+
+```sh
+./flow-web
 ```
 
 The generated output can be found in the '**output**' folder.
