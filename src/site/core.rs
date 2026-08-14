@@ -113,7 +113,7 @@ async fn generate_error_pages() {
     let ctx = Err404Template {};
     Helper::write_file(
         &Helper::get_output_dir().join("404.html"),
-        &ctx.render_once().unwrap().as_bytes(),
+        ctx.render_once().unwrap().as_bytes(),
     )
     .await
     .unwrap();
@@ -126,7 +126,7 @@ async fn generate_error_pages() {
     let ctx = Err500Template {};
     Helper::write_file(
         &Helper::get_output_dir().join("500.html"),
-        &ctx.render_once().unwrap().as_bytes(),
+        ctx.render_once().unwrap().as_bytes(),
     )
     .await
     .unwrap();
@@ -141,7 +141,7 @@ async fn generate_project_pages() {
     let ctx = HFGETemplate {};
     Helper::write_file(
         &Helper::get_output_dir().join("projects/hfge/index.html"),
-        &ctx.render_once().unwrap().as_bytes(),
+        ctx.render_once().unwrap().as_bytes(),
     )
     .await
     .unwrap();
@@ -156,7 +156,7 @@ async fn generate_contact_page() {
     let ctx = ContactTemplate {};
     Helper::write_file(
         &Helper::get_output_dir().join("contact/index.html"),
-        &ctx.render_once().unwrap().as_bytes(),
+        ctx.render_once().unwrap().as_bytes(),
     )
     .await
     .unwrap();
@@ -168,7 +168,7 @@ pub async fn generate_root_index(shared: Arc<CoreShared>) {
     // write page to disk:
     Helper::write_file_sync(
         &Helper::get_output_dir().join("index.html"),
-        &lock.render().unwrap().as_bytes(),
+        lock.render().unwrap().as_bytes(),
     )
     .unwrap();
 }

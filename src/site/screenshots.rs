@@ -52,7 +52,7 @@ impl ScreenshotsShared {
             panic!("Did not find any screenshots for key: {}", key);
         }
 
-        return screenshots;
+        screenshots
     }
 }
 
@@ -83,16 +83,12 @@ pub async fn generate_screenshots(shared: Arc<ScreenshotsShared>) {
 
 async fn parse_files(shared: Arc<ScreenshotsShared>, base_dir: &str) {
     let mut reader = tokio::fs::read_dir(base_dir).await.unwrap();
-    loop {
-        if let Some(f) = reader.next_entry().await.unwrap() {
-            let contents = tokio::fs::read_to_string(f.path()).await.unwrap();
+    while let Some(f) = reader.next_entry().await.unwrap() {
+        let contents = tokio::fs::read_to_string(f.path()).await.unwrap();
 
-            parse_file(shared.clone(), contents);
-            update_screenshots(shared.clone());
-            generate(shared.clone());
-        } else {
-            break;
-        }
+        parse_file(shared.clone(), contents);
+        update_screenshots(shared.clone());
+        generate(shared.clone());
     }
 }
 
@@ -101,14 +97,14 @@ fn parse_file(shared: Arc<ScreenshotsShared>, contents: String) {
     let mut screenshot = Screenshot::new();
 
     for line in contents.lines() {
-        if line.len() == 0 {
+        if line.is_empty() {
             continue;
         }
 
         let v: Vec<&str> = line.splitn(2, ':').collect();
         assert_eq!(v.len(), 2);
 
-        if let Some(key) = v.get(0) {
+        if let Some(key) = v.first() {
             if *key == "screenshots_title" {
                 if let Some(value) = v.get(1) {
                     screenshots_info.title = String::from(value.trim());
@@ -149,12 +145,12 @@ fn parse_file(shared: Arc<ScreenshotsShared>, contents: String) {
         }
 
         // all info needed for one screenshot:
-        if screenshot.title.len() > 0
-            && screenshot.image_min.len() > 0
-            && screenshot.image_big.len() > 0
-            && screenshot.url.len() > 0
-            && screenshots_info.title.len() > 0
-            && screenshots_info.url.len() > 0
+        if !screenshot.title.is_empty()
+            && !screenshot.image_min.is_empty()
+            && !screenshot.image_big.is_empty()
+            && !screenshot.url.is_empty()
+            && !screenshots_info.title.is_empty()
+            && !screenshots_info.url.is_empty()
         {
             screenshot.screenshots_title = screenshots_info.title.clone();
             screenshot.screenshots_url = screenshots_info.url.clone();
@@ -187,7 +183,7 @@ fn update_screenshots(shared: Arc<ScreenshotsShared>) {
     // TODO: this could be done more efficiently:
     // (need screenshots for each screenshot as they are linked below)
     let mut lock = shared.state.lock().unwrap();
-    for (_key, value) in &mut lock.screenshots {
+    for value in lock.screenshots.values_mut() {
         let v = value.clone();
         for s in value {
             s.screenshots = v.clone();
@@ -198,14 +194,14 @@ fn update_screenshots(shared: Arc<ScreenshotsShared>) {
 fn generate(shared: Arc<ScreenshotsShared>) {
     let lock = shared.state.lock().unwrap();
 
-    for (_key, screenshots) in &lock.screenshots {
+    for screenshots in lock.screenshots.values() {
         // create output dir needed:
         Helper::create_dir_all(&Helper::get_output_dir().join(&lock.url));
 
         // write page to disk:
         Helper::write_file_sync(
             &Helper::get_output_dir().join(&lock.url).join("index.html"),
-            &lock.render().unwrap().as_bytes(),
+            lock.render().unwrap().as_bytes(),
         )
         .unwrap();
 

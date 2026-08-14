@@ -54,8 +54,8 @@ pub struct BlogState {
 impl BlogState {
     pub fn new(base_dir: String, num_previews_per_page: usize) -> Self {
         Self {
-            base_dir: base_dir,
-            num_previews_per_page: num_previews_per_page,
+            base_dir,
+            num_previews_per_page,
             blog_posts: Vec::new(),
             topic_blog_indices: HashMap::new(),
             topics: Vec::new(),
@@ -110,7 +110,7 @@ pub fn get_latest_blog_posts(shared: Arc<BlogShared>, num_posts: usize) -> Vec<B
         }
     }
 
-    return blog_posts;
+    blog_posts
 }
 
 fn create_output_dirs(shared: Arc<BlogShared>) {
@@ -124,15 +124,11 @@ fn create_output_dirs(shared: Arc<BlogShared>) {
 async fn parse_markdown_files(shared: Arc<BlogShared>, base_dir: String) {
     let mut reader = tokio::fs::read_dir("blog-posts").await.unwrap();
     let mut tasks = vec![];
-    loop {
-        if let Some(f) = reader.next_entry().await.unwrap() {
-            tasks.push(tokio::spawn(parse_markdown_file(
-                f.path(),
-                base_dir.clone(),
-            )));
-        } else {
-            break;
-        }
+    while let Some(f) = reader.next_entry().await.unwrap() {
+        tasks.push(tokio::spawn(parse_markdown_file(
+            f.path(),
+            base_dir.clone(),
+        )));
     }
 
     // await all created blog_posts:
@@ -161,7 +157,7 @@ async fn parse_markdown_files(shared: Arc<BlogShared>, base_dir: String) {
         if let Some(indices) = year_blog_indices.get_mut(&year_str) {
             indices.push(i);
         } else {
-            year_blog_indices.insert(String::from(year_str), vec![i]);
+            year_blog_indices.insert(year_str, vec![i]);
         }
     }
 
@@ -169,21 +165,19 @@ async fn parse_markdown_files(shared: Arc<BlogShared>, base_dir: String) {
     let mut lock = shared.state.lock().unwrap();
     lock.blog_posts = blog_posts;
 
-    for (key, _value) in &topic_blog_indices {
+    for key in topic_blog_indices.keys() {
         lock.topics.push(String::from(key));
-        lock.topics_sanitized
-            .push(String::from(Helper::sanitize_string(key)));
+        lock.topics_sanitized.push(Helper::sanitize_string(key));
     }
     // sort by topic name:
-    lock.topics
-        .sort_by(|a, b| a.to_lowercase().cmp(&b.to_lowercase()));
-    lock.topics_sanitized.sort_by(|a, b| a.cmp(b));
+    lock.topics.sort_by_key(|a| a.to_lowercase());
+    lock.topics_sanitized.sort();
 
-    for (key, _value) in &year_blog_indices {
+    for key in year_blog_indices.keys() {
         lock.years.push(String::from(key));
     }
     // sort by year:
-    lock.years.sort_by(|a, b| a.cmp(b));
+    lock.years.sort();
 
     // move created hashmaps:
     lock.topic_blog_indices = topic_blog_indices;
@@ -227,7 +221,7 @@ async fn generate_overview_posts(shared: Arc<BlogShared>) {
                 &Helper::get_output_dir()
                     .join(&lock.base_dir)
                     .join("index.html"),
-                &lock.render().unwrap().as_bytes(),
+                lock.render().unwrap().as_bytes(),
             )
             .unwrap();
         }
@@ -240,7 +234,7 @@ async fn generate_overview_posts(shared: Arc<BlogShared>) {
             &Helper::get_output_dir()
                 .join(&lock.overview_page_url)
                 .join("index.html"),
-            &lock.render().unwrap().as_bytes(),
+            lock.render().unwrap().as_bytes(),
         )
         .unwrap();
 
@@ -295,7 +289,7 @@ async fn generate_overview_topic(shared: Arc<BlogShared>) {
                         .join("topic")
                         .join(Helper::sanitize_string(key))
                         .join("index.html"),
-                    &lock.render().unwrap().as_bytes(),
+                    lock.render().unwrap().as_bytes(),
                 )
                 .unwrap();
             }
@@ -308,7 +302,7 @@ async fn generate_overview_topic(shared: Arc<BlogShared>) {
                 &Helper::get_output_dir()
                     .join(&lock.overview_page_url)
                     .join("index.html"),
-                &lock.render().unwrap().as_bytes(),
+                lock.render().unwrap().as_bytes(),
             )
             .unwrap();
 
@@ -363,7 +357,7 @@ async fn generate_overview_year(shared: Arc<BlogShared>) {
                         .join("year")
                         .join(Helper::sanitize_string(key))
                         .join("index.html"),
-                    &lock.render().unwrap().as_bytes(),
+                    lock.render().unwrap().as_bytes(),
                 )
                 .unwrap();
             }
@@ -376,7 +370,7 @@ async fn generate_overview_year(shared: Arc<BlogShared>) {
                 &Helper::get_output_dir()
                     .join(&lock.overview_page_url)
                     .join("index.html"),
-                &lock.render().unwrap().as_bytes(),
+                lock.render().unwrap().as_bytes(),
             )
             .unwrap();
 
@@ -451,7 +445,7 @@ async fn generate_atom_feed(shared: Arc<BlogShared>) {
         // categories:
         for topic in &blog_post.topics {
             _feed_data += "        <category term=\"";
-            _feed_data += &topic;
+            _feed_data += topic;
             _feed_data += "\"/>\n";
         }
 
@@ -496,5 +490,5 @@ fn get_date_now_for_feed() -> String {
         day_str = format!("0{}", day);
     }
 
-    return format!("{}-{}-{}T{}Z", date.year(), month_str, day_str, date.time());
+    format!("{}-{}-{}T{}Z", date.year(), month_str, day_str, date.time())
 }

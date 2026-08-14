@@ -38,7 +38,7 @@ impl Screenshot {
         // write page to disk:
         Helper::write_file_sync(
             &Helper::get_output_dir().join(&self.url).join("index.html"),
-            &self.render().unwrap().as_bytes(),
+            self.render().unwrap().as_bytes(),
         )
         .unwrap();
     }

@@ -24,7 +24,7 @@ impl Helper {
 
     pub fn get_output_dir() -> PathBuf {
         let cwd = Helper::get_current_working_dir();
-        return cwd.join("output");
+        cwd.join("output")
     }
 
     /// Replaces spaces with '-', only allows 'a-z', 'A-Z', '0-9' and '-' characters and finally
@@ -51,10 +51,10 @@ impl Helper {
         let after_unsupported = re_unsupported.replace_all(&after_whitespace, "");
 
         // also convert to lower case:
-        return after_unsupported.to_string().to_lowercase();
+        after_unsupported.to_string().to_lowercase()
     }
 
-    pub fn create_dir_all<'a>(dir: &'a PathBuf) {
+    pub fn create_dir_all(dir: &PathBuf) {
         match fs::create_dir_all(dir) {
             Ok(()) => info!("Created dir: '{}'", dir.display()),
             Err(err) => panic!(
@@ -65,7 +65,7 @@ impl Helper {
         };
     }
 
-    pub fn remove_dir_all<'a>(dir: &'a PathBuf) {
+    pub fn remove_dir_all(dir: &PathBuf) {
         match fs::remove_dir_all(dir) {
             Ok(()) => info!("Removed dir: '{}'", dir.display()),
             Err(err) => panic!(
@@ -76,8 +76,8 @@ impl Helper {
         };
     }
 
-    pub fn exists_dir<'a>(dir: &'a PathBuf) -> bool {
-        return dir.as_path().exists();
+    pub fn exists_dir(dir: &Path) -> bool {
+        dir.exists()
     }
 
     #[async_recursion::async_recursion]
@@ -99,7 +99,7 @@ impl Helper {
         Ok(())
     }
 
-    pub async fn write_file<'a>(file_path: &'a PathBuf, data: &'a [u8]) -> io::Result<()> {
+    pub async fn write_file(file_path: &PathBuf, data: &[u8]) -> io::Result<()> {
         // create output file:
         let mut file = File::create(file_path).await?;
 
@@ -110,7 +110,7 @@ impl Helper {
         Ok(())
     }
 
-    pub fn write_file_sync<'a>(file_path: &'a PathBuf, data: &'a [u8]) -> io::Result<()> {
+    pub fn write_file_sync(file_path: &PathBuf, data: &[u8]) -> io::Result<()> {
         // create output file:
         let mut file = std::fs::File::create(file_path)?;
 

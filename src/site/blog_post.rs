@@ -31,8 +31,7 @@ pub struct BlogPost {
 impl BlogPost {
     pub fn new(base_dir: String) -> BlogPost {
         BlogPost {
-            base_dir: base_dir,
-
+            base_dir,
             author: String::new(),
             published: NaiveDateTime::parse_from_str("2000-01-01 23:56:04", "%Y-%m-%d %H:%M:%S")
                 .unwrap(),
@@ -52,15 +51,15 @@ impl BlogPost {
     }
 
     pub fn get_topics(&self) -> &Vec<String> {
-        return &self.topics;
+        &self.topics
     }
 
     pub fn get_year(&self) -> String {
-        return self.published.year().to_string();
+        self.published.year().to_string()
     }
 
     pub fn get_published_date(&self) -> &NaiveDateTime {
-        return &self.published;
+        &self.published
     }
 
     fn get_date_for_feed(&self, date: &NaiveDateTime) -> String {
@@ -78,13 +77,13 @@ impl BlogPost {
             day_str = format!("0{}", day);
         }
 
-        return format!(
+        format!(
             "{}-{}-{}T{}.000Z",
             date.year(),
             month_str,
             day_str,
             date.time()
-        );
+        )
     }
 
     pub fn create_output_dir(&self) {
@@ -101,7 +100,7 @@ impl BlogPost {
                 .join(&self.base_dir)
                 .join(&self.url)
                 .join("index.html"),
-            &self.render().unwrap().as_bytes(),
+            self.render().unwrap().as_bytes(),
         )
         .unwrap();
     }
@@ -114,7 +113,7 @@ pub async fn parse_markdown_file(path: PathBuf, base_dir: String) -> BlogPost {
     let mut blog_post = BlogPost::new(base_dir.clone());
 
     for line in contents.lines() {
-        if !post_start_found && line.len() > 0 {
+        if !post_start_found && !line.is_empty() {
             if line == "---" {
                 post_start_found = true;
                 continue;
@@ -123,7 +122,7 @@ pub async fn parse_markdown_file(path: PathBuf, base_dir: String) -> BlogPost {
             let v: Vec<&str> = line.splitn(2, ':').collect();
             assert_eq!(v.len(), 2);
 
-            if let Some(key) = v.get(0) {
+            if let Some(key) = v.first() {
                 if *key == "author" {
                     if let Some(value) = v.get(1) {
                         blog_post.author = String::from(value.trim());
@@ -178,7 +177,7 @@ pub async fn parse_markdown_file(path: PathBuf, base_dir: String) -> BlogPost {
                 }
             }
         } else {
-            if markdown.len() > 0 {
+            if !markdown.is_empty() {
                 markdown += "\n";
             }
             markdown += line;
@@ -188,5 +187,5 @@ pub async fn parse_markdown_file(path: PathBuf, base_dir: String) -> BlogPost {
     // convert markdown to html:
     blog_post.html = markdown::to_html(&markdown);
 
-    return blog_post;
+    blog_post
 }
