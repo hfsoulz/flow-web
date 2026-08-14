@@ -48,7 +48,7 @@ Add this to your `Cargo.toml`:
 
 ```
 [dependencies]
-flow-rectpack = { git = "https://git.luflow.net/hfsoulz/flow-rectpack.git", tag = "v0.1.1" }
+flow-rectpack = { git = "https://git.luflow.net/hfsoulz/flow-rectpack.git", tag = "v0.2.0" }
 ```
 
 Then:
