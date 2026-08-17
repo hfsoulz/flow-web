@@ -5,6 +5,7 @@ edition = "2024"
 authors = ["Andreas Widen <aw@luflow.net>"]
 description = "flow-web is a program that will allow you to generate a static website."
 license = "AGPL-3.0-or-later"
+homepage = "https://git.luflow.net/hfsoulz/flow-web.git"
 repository = "https://git.luflow.net/hfsoulz/flow-web.git"
 readme = "README.md"
 documentation = "https://git.luflow.net/hfsoulz/flow-web.git"
