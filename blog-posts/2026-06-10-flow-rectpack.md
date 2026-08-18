@@ -1,6 +1,6 @@
 author: Andreas
 published: 2026-06-10 11:31:00
-updated: 2026-06-10 11:31:00
+updated: 2026-08-18 20:00:00
 topics: flow-rectpack, Rect bin packing, Rust
 title: flow-rectpack: A library for packing rectangles into two-dimensional finite bins
 snippet: flow-rectpack is a library for packing rectangles into two-dimensional finite bins using different heuristic methods for placement.
@@ -44,18 +44,17 @@ git clone https://git.luflow.net/hfsoulz/flow-rectpack.git
 
 ### Usage
 
-Add this to your `Cargo.toml`:
+Add `flow-rectpack` to your `Cargo.toml`:
 
 ```
-[dependencies]
-flow-rectpack = { git = "https://git.luflow.net/hfsoulz/flow-rectpack.git", tag = "v0.2.0" }
+cargo add flow-rectpack
 ```
 
 Then:
 
 ```rust
-use flow_rbp::FreeRectHeuristic;
-use flow_rbp::RectsBinPack;
+use flow_rectpack::FreeRectHeuristic;
+use flow_rectpack::RectsBinPack;
 
 // create a new bin of size 32x32 which allows rotation:
 let mut rbp = RectsBinPack::new(32, 32, true).unwrap();
@@ -64,16 +63,15 @@ let mut rbp = RectsBinPack::new(32, 32, true).unwrap();
 assert_eq!(rbp.get_occupancy(), 0.0);
 
 // add a few rects that should fit:
-assert_eq!(rbp.insert(16, 16, FreeRectHeuristic::BottomLeft).is_some(), true);
-assert_eq!(rbp.insert(16, 16, FreeRectHeuristic::BottomLeft).is_some(), true);
-assert_eq!(rbp.get_occupancy(), 0.5);
-assert_eq!(rbp.insert(16, 16, FreeRectHeuristic::BottomLeft).is_some(), true);
-assert_eq!(rbp.insert(16, 16, FreeRectHeuristic::BottomLeft).is_some(), true);
-assert_eq!(rbp.get_occupancy(), 1.0);
+assert!(rbp.insert(16, 16, FreeRectHeuristic::BottomLeft).is_some());
+assert!(rbp.insert(16, 16, FreeRectHeuristic::BottomLeft).is_some());
+assert!(rbp.get_occupancy(), 0.5);
+assert!(rbp.insert(16, 16, FreeRectHeuristic::BottomLeft).is_some());
+assert!(rbp.insert(16, 16, FreeRectHeuristic::BottomLeft).is_some());
+assert!(rbp.get_occupancy(), 1.0);
 
 // this rect will not fit and therefore returns None:
-assert_eq!(rbp.insert(1, 1, FreeRectHeuristic::BottomLeft).is_none(), true);
-
+assert!(rbp.insert(1, 1, FreeRectHeuristic::BottomLeft).is_none());
 ```
 
 ### License
