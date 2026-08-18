@@ -1,6 +1,6 @@
 author: Andreas
 published: 2026-06-10 14:01:00
-updated: 2026-06-10 14:01:00
+updated: 2026-08-18 20:10:00
 topics: flow-texpack, Texture Atlas, Image Atlas, generator, Rust
 title: flow-texpack: A program that will allow you to generate texture atlas.
 snippet: flow-texpack is a program that will allow you to generate texture atlas from input images (BMP, HDR, JPG, PNG, TGA, TIFF, WEBP).
@@ -30,13 +30,23 @@ Clone the `git` repository:
 git clone https://git.luflow.net/hfsoulz/flow-texpack.git
 ```
 
-### Compiling the code
+### Build from source
 
 Build using release mode and install locally:
 
 ```sh
 cargo install --locked --path .
 ```
+
+### Install from Cargo
+
+Install directly from Cargo:
+
+```sh
+cargo install flow-texpack
+```
+
+### Binary folder
 
 The binary produced should be located here: `~/.cargo/bin/flow-texpack` (on
 GNU/Linux). Make sure `~/.cargo/bin` is in your `PATH`.
