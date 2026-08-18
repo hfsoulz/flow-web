@@ -5,21 +5,20 @@ edition = "2024"
 authors = ["Andreas Widen <aw@luflow.net>"]
 description = "flow-web is a program that will allow you to generate a static website."
 license = "AGPL-3.0-or-later"
-homepage = "https://git.luflow.net/hfsoulz/flow-web.git"
+homepage = "https://luflow.net/"
 repository = "https://git.luflow.net/hfsoulz/flow-web.git"
 readme = "README.md"
-documentation = "https://git.luflow.net/hfsoulz/flow-web.git"
 keywords = ["static-site-generator", "website-generator"]
-exclude = [".github", "/ci/*", "*.log"]
+exclude = [".github", ".forgejo", ".gitignore", "*.log"]
 
 [dependencies]
 async-recursion = "1.1.1"
 chrono = "0.4.45"
 fern = "0.7.1"
-humantime = "2.3.0"
-log = "0.4.32"
+humantime = "2.4.0"
+log = "0.4.33"
 markdown = "1.0.0"
-regex = "1.12.4"
-rich_rust = "0.2.1"
-sailfish = "0.11.1"
-tokio = { version = "1.52.3", features = ["macros", "fs", "io-util", "rt-multi-thread"] }
+regex = "1.13.1"
+rich_rust = "0.2.2"
+sailfish = "0.11.3"
+tokio = { version = "1.53.1", features = ["macros", "fs", "io-util", "rt-multi-thread"] }
