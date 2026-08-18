@@ -35,7 +35,7 @@ pushing:
 - `cargo clippy --all-targets -- -D warnings`
 - `cargo check --all-targets`
 - `cargo build --all-targets`
-- `cargo test --all-targets`
+- `cargo run`
 
 Fix any warnings or errors and then:
 
@@ -47,5 +47,5 @@ Fix any warnings or errors and then:
 
 # License
 
-By contributing, you agree that your contributions will be licensed under [Zlib
-License](./LICENSE).
+By contributing, you agree that your contributions will be licensed under
+[AGPL-3.0 License](./LICENSE).
