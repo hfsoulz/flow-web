@@ -18,16 +18,10 @@ cargo build --release
 
 ## Generate the site
 
-If built from source:
+Generate the site using release mode:
 
 ```sh
 cargo run --release
-```
-
-If downloaded binary:
-
-```sh
-./flow-web
 ```
 
 The generated output can be found in the '**output**' folder.
