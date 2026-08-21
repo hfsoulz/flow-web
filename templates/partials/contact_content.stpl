@@ -8,6 +8,10 @@
                 <p>For encrypted communication download: <a href="https://luflow.net/static/gpg/aw-luflow-net-pubkey.asc">https://luflow.net/static/gpg/aw-luflow-net-pubkey.asc</a></p>
                 <p>Then</p>
                 <pre><code class="language-sh">gpg --import aw-luflow-net-pubkey.asc</code></pre>
+                <p>Key can also be downloaded and imported with the following command:</p>
+                <pre><code class="language-sh">gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 0x5B85F9B5F576A667</code></pre>
+                <p>Key fingerprint should be:
+                <pre><code class="language-sh">8FD6 1E69 A555 B21D 2347  EEAD 5B85 F9B5 F576 A667</code></pre>
                 <p>This key is also used for signing Git commits and tags.</p>
             </section>
         </main>
