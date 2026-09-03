@@ -1,6 +1,6 @@
 [package]
 name = "flow-web"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2024"
 authors = ["Andreas Widen <aw@luflow.net>"]
 description = "flow-web is a program that will allow you to generate a static website."
