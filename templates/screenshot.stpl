@@ -34,7 +34,7 @@
                     <img class="responsive-image centered-block" src="/<%= self.image_big %>" alt="<%= self.title %>" />
                 </div>
                 <div class="screenshots-box top-shadow-bg">
-                    <% 
+                    <%
                         for screenshot in &self.screenshots {
                             if self.title == screenshot.title {
                                 continue; // skip currently viewed big:
@@ -70,4 +70,3 @@
 
 </body>
 </html>
-

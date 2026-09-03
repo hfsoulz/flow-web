@@ -33,7 +33,7 @@
             <section class="page-post centered-text">
                 <h2><%= self.overview_title %><span class="page-number-indicator"> (Page <%= self.overview_current_page %> of <%= self.overview_num_pages %>)</span></h2>
                 <div class="sheet">
-                    <% 
+                    <%
                         if self.overview_type == 1 {
                             if let Some(indices) = self.topic_blog_indices.get(&self.overview_topic) {
                                 for i in self.overview_offset..self.overview_offset + self.overview_num_posts {
@@ -51,7 +51,7 @@
                         <p class="item-date"><%= post.published.to_string() %></p>
                         <p class="item-summary" lang="en"><%= post.snippet %></p>
                     </a>
-                    <% 
+                    <%
                                 }
                             }
                         } else if self.overview_type == 2 {
@@ -71,7 +71,7 @@
                         <p class="item-date"><%= post.published.to_string() %></p>
                         <p class="item-summary" lang="en"><%= post.snippet %></p>
                     </a>
-                    <% 
+                    <%
                                 }
                             }
                         } else if self.overview_type == 0 {
@@ -86,7 +86,7 @@
                         <p class="item-date"><%= post.published.to_string() %></p>
                         <p class="item-summary" lang="en"><%= post.snippet %></p>
                     </a>
-                    <% 
+                    <%
                             }
                         } else {
                             panic!("overview_type: {} is not implemented!", self.overview_type);
@@ -181,4 +181,3 @@
 
 </body>
 </html>
-

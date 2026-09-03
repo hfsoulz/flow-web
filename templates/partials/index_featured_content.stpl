@@ -1,16 +1,16 @@
 <section class="featured-content">
                 <h2 class="a11y-offset">Summary</h2>
                 <ul>
-                    <li><b>Libre.</b><a class="link-yellow" href="/<%= self.hfge_url %>"> HFGE</a> will be distributed under the zlib license. 
+                    <li><b>Libre.</b><a class="link-yellow" href="/<%= self.hfge_url %>"> HFGE</a> will be distributed under the zlib license.
                         This license allows you to use HFGE freely in any software (it respects your freedom).
                     </li>
-                    <li><b>Vulkan.</b><a class="link-yellow" href="/<%= self.hfge_url %>"> HFGE</a> comes with a modern, low level, low overhead, 
+                    <li><b>Vulkan.</b><a class="link-yellow" href="/<%= self.hfge_url %>"> HFGE</a> comes with a modern, low level, low overhead,
                         cross platform  renderer in the form of Vulkan (additional renderers can be added as plugins if needed).
                     </li>
-                    <li><b>Cross platform.</b><a class="link-yellow" href="/<%= self.hfge_url %>"> HFGE</a> will initially support Windows and 
+                    <li><b>Cross platform.</b><a class="link-yellow" href="/<%= self.hfge_url %>"> HFGE</a> will initially support Windows and
                         GNU/Linux. More platforms such as Android will be added later on.
                     </li>
-                    <li><b>Tools.</b><a class="link-yellow" href="/<%= self.hfge_url %>"> HFGE</a> comes with a few useful tools for generating 
+                    <li><b>Tools.</b><a class="link-yellow" href="/<%= self.hfge_url %>"> HFGE</a> comes with a few useful tools for generating
                         bitmap fonts, texture atlases, resource archives and a hash checksum tool.
                     </li>
                 </ul>

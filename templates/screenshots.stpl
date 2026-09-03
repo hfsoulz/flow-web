@@ -29,7 +29,7 @@
         <main>
             <section class="light-text centered-text noise-bg">
                 <div class="screenshots-box top-shadow-bg">
-                    <% 
+                    <%
                     if let Some(screenshots) = self.screenshots.get(&self.title) {
                         for screenshot in screenshots {
                     %>
@@ -42,7 +42,7 @@
                             <span class="hidden">.</span>
                         </p>
                     </div>
-                    <% 
+                    <%
                         }
                     }
                     %>

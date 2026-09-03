@@ -33,7 +33,7 @@
                 <h2>Screenshots</h2>
                 <p class="limit-width centered-block">A few early development screenshots of <a href="/<%= self.hfge_url %>" class="link-yellow">HFGE</a> in action.</p>
                 <div class="screenshots-box">
-                    <% 
+                    <%
                         for screenshot in &self.screenshots {
                     %>
                     <div class="screenshot-preview">
@@ -51,7 +51,7 @@
 
             <section class="centered-text">
             <h2>Latest blog posts</h2>
-            <% 
+            <%
                 for blog_post in &self.blog_posts {
             %>
             <a class="item-preview" href="/<%= self.blog_base_dir %>/<%= blog_post.url %>/">
@@ -82,4 +82,3 @@
 
 </body>
 </html>
-
