@@ -96,7 +96,7 @@ code[class*='language-'] {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #white;
+    background-color: white;
     border-radius: 6px;
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
