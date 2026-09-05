@@ -4,6 +4,11 @@ Contributions are always welcome! There is a multitude of ways in which you can
 help depending on what you like to do, or are good at. Documentation, code,
 issues, new features are all ways of contributing and greatly appreciated!
 
+Contributions can be made here:
+
+- https://codeberg.org/hfsoulz/flow-web.git
+- https://github.com/hfsoulz/flow-web.git
+
 ## Install Rust
 
 If you want to contribute code then `Rust` (stable) should be installed along
