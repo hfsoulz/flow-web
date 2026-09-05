@@ -1,6 +1,6 @@
 [package]
 name = "flow-web"
-version = "0.2.3"
+version = "0.2.4"
 edition = "2024"
 authors = ["Andreas Widen <aw@luflow.net>"]
 description = "flow-web is a program that will allow you to generate a static website."
@@ -9,7 +9,7 @@ homepage = "https://luflow.net/"
 repository = "https://git.luflow.net/hfsoulz/flow-web.git"
 readme = "README.md"
 keywords = ["static-site-generator", "website-generator"]
-exclude = [".github", ".forgejo", ".gitignore", "*.log"]
+exclude = [".github", ".forgejo", ".gitignore", "*.log", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md", "SECURITY.md"]
 
 [dependencies]
 async-recursion = "1.1.1"
